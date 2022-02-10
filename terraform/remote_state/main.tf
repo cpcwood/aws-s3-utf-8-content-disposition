@@ -6,10 +6,10 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.73"
+      version = "~> 4.0"
     }
   }
-  required_version = ">= 1.1.4"
+  required_version = ">= 1.1.5"
 }
 
 provider "aws" {
@@ -17,8 +17,12 @@ provider "aws" {
   profile = "ecs-rollback-hello-world"
 }
 
+resource "random_id" "terraform_state" {
+  byte_length = 6
+}
+
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = var.tf_state_s3_bucket
+  bucket =  "${var.tf_state_s3_bucket}-${random_id.terraform_state.hex}"
   acl = "private"
   tags = {}
 
