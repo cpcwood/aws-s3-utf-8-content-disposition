@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Description: Build sample ECS infrastructure
+set -e
+
+cd ./terraform/infrastructure
+
+terraform apply -destroy
+
+cd -
+cd ./terraform/remote_state
+
+terraform apply -destroy
