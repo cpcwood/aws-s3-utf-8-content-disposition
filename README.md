@@ -1,12 +1,14 @@
 # AWS S3 UTF-8 Content Disposition - Examples
 
-Sample scripts and AWS infrastructure to generate AWS S3 UTF-8 content disposition examples as outlined in my blog post: [AWS S3 UTF-8 Content Disposition](<link-to-blog-post>). 
+**WIP**
+
+Sample scripts and AWS infrastructure to generate AWS S3 UTF-8 content disposition examples as outlined in my blog post: [AWS S3 UTF-8 Content Disposition](https://cpcwood.com/blog). 
 
 ## Dependencies
 
 Install required dependencies:
-- [bash](https://www.gnu.org/software/bash/) - [command-not-found](https://command-not-found.com/bash)
-- [terraform v1.1.5](https://learn.hashicorp.com/tutorials/terraform/install-cli) - [tfenv](https://github.com/tfutils/tfenv) can be useful
+- [bash](https://www.gnu.org/software/bash/) ([command-not-found](https://command-not-found.com/bash))
+- [terraform v1.1.5](https://learn.hashicorp.com/tutorials/terraform/install-cli) ([tfenv](https://github.com/tfutils/tfenv) can be useful)
 - [ruby v3.1.0](https://www.ruby-lang.org/en/downloads/)
 
 ## Building Infrastructure
