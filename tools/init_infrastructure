@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Description: Initialize sample AWS S3 and Cloudfront Infrastructure
+set -e
+
+if [[ ! -f "./keys/cloudfront_s3.pem" ]]; then
+  echo "Generating CloudFront Signed URLs Key"
+  openssl genrsa -out ./keys/cloudfront_s3.pem
+fi
+
+if [[ ! -f "./keys/cloudfront_s3.pub" ]]; then
+  openssl rsa -pubout -in ./keys/cloudfront_s3.pem -out ./keys/cloudfront_s3.pub
+fi
+
+cd ./terraform/remote_state
+
+terraform fmt
+terraform init
+terraform apply
+
+tf_state_bucket_region="$(terraform output tf_state_s3_bucket_region | tr -d '"' )"
+tf_state_bucket="$(terraform output tf_state_s3_bucket | tr -d '"' )"
+tf_state_lock_table="$(terraform output tf_state_lock_table | tr -d '"' )"
+aws_profile="$(terraform output aws_profile | tr -d '"' )"
+tf_state_key="aws-s3-utf-8-content-disposition.tfstate"
+
+cd -
+cd ./terraform/infrastructure
+
+terraform fmt
+terraform init \
+  -backend-config "region=$tf_state_bucket_region" \
+  -backend-config "bucket=$tf_state_bucket" \
+  -backend-config "dynamodb_table=$tf_state_lock_table" \
+  -backend-config "profile=$aws_profile" \
+  -backend-config "key=$tf_state_key"

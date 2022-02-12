@@ -1,3 +1,3 @@
 output "sample_s3_bucket" {
-  value = module.private_s3_bucket.bucket.id
+  value = module.sample_s3_bucket.bucket.id
 }
