@@ -39,6 +39,13 @@ resource "random_id" "private_s3_bucket" {
 # ==============================================
 # Sample S3 objects
 
+resource "aws_s3_object" "sample-image" {
+  bucket        = module.private_s3_bucket.bucket.id
+  key           = basename("./assets/jessie.jpg")
+  source        = "./assets/jessie.jpg"
+  etag          = filemd5("./assets/jessie.jpg")
+  force_destroy = true
+}
 
 # ==============================================
 # Cloudfront distribution for accessing s3 object using signed URLs

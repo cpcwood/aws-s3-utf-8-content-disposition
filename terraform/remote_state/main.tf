@@ -47,7 +47,7 @@ resource "aws_s3_bucket_public_access_block" "terraform_state" {
 }
 
 resource "aws_dynamodb_table" "terraform_state_lock" {
-  name           = var.tf_state_lock_table
+  name           = "${var.tf_state_lock_table}-${random_id.terraform_state.hex}"
   read_capacity  = 1
   write_capacity = 1
   hash_key       = "LockID"
