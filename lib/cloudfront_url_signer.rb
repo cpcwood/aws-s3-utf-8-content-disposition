@@ -12,8 +12,8 @@ class CloudfrontUrlSigner
     @expiry_time = expiry_time
   end
 
-  def sign(object_key:, query_string_hash: {})
-    subject = "https://#{domain.strip}/#{object_key.strip}?#{build_query(query_string_hash)}"
+  def sign(object_key:, query_string: {})
+    subject = "https://#{domain.strip}/#{object_key.strip}?#{build_query(query_string)}"
     expires = Time.now.to_i + @expiry_time
     signature = generate_signature(subject:, expires:)
     build_signed_url(subject:, signature:, expires:)
@@ -21,8 +21,8 @@ class CloudfrontUrlSigner
 
   private
 
-  def build_query(query_string_hash)
-    query_string_hash.map { |key, value| "#{key}=#{value}" }.join('&')
+  def build_query(query_string)
+    query_string.map { |key, value| "#{key}=#{value}" }.join('&')
   end
 
   def generate_signature(subject:, expires:)

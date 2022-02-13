@@ -41,7 +41,7 @@ resource "random_id" "sample_s3_bucket" {
 
 resource "aws_s3_object" "sample_image" {
   bucket = module.sample_s3_bucket.bucket.id
-  key    = basename("./assets/jessie.jpg")
+  key    = "not-at-cat.jpg"
   source = "./assets/jessie.jpg"
   etag   = filemd5("./assets/jessie.jpg")
 }
