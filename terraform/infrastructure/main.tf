@@ -39,7 +39,7 @@ resource "random_id" "sample_s3_bucket" {
 # ==============================================
 # Sample S3 objects
 
-resource "aws_s3_object" "sample-image" {
+resource "aws_s3_object" "sample_image" {
   bucket = module.sample_s3_bucket.bucket.id
   key    = basename("./assets/jessie.jpg")
   source = "./assets/jessie.jpg"

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Description: Output value from AWS S3 and CloudFront infrastructure
+set -e
+
+if [[ -d "./terraform/infrastructure" ]]; then
+  cd ./terraform/infrastructure
+else
+  cd ../terraform/infrastructure
+fi
+
+terraform output $@ | tr -d '"'

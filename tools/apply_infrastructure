@@ -12,5 +12,3 @@ cd ./terraform/infrastructure
 terraform fmt
 terraform apply \
   -var "aws_profile=$aws_profile"
-
-# build script to do all of above
