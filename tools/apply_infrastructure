@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Description: Build sample AWS S3 and CloudFront Infrastructure
+# Description: Apply sample AWS S3 and CloudFront Infrastructure
 set -e
 
 cd ./terraform/remote_state
@@ -9,6 +9,5 @@ aws_profile="$(terraform output aws_profile | tr -d '"' )"
 cd -
 cd ./terraform/infrastructure
 
-terraform fmt
 terraform apply \
   -var "aws_profile=$aws_profile"

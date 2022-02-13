@@ -13,7 +13,6 @@ fi
 
 cd ./terraform/remote_state
 
-terraform fmt
 terraform init
 terraform apply
 
@@ -26,7 +25,6 @@ tf_state_key="aws-s3-utf-8-content-disposition.tfstate"
 cd -
 cd ./terraform/infrastructure
 
-terraform fmt
 terraform init \
   -backend-config "region=$tf_state_bucket_region" \
   -backend-config "bucket=$tf_state_bucket" \
