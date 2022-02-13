@@ -15,7 +15,7 @@ Install required dependencies:
 
 ### AWS Credentials
 
-Create IAM user with relevant permissions for Terraform ECS setup (S3, DynamoDB, Cloudfront, etc), or `AdministratorAccess` for quicker setup.
+Create IAM user with relevant permissions for Terraform ECS setup (S3, DynamoDB, CloudFront, etc), or `AdministratorAccess` for quicker setup.
 
 Add access keys for the IAM user to the `aws-s3-utf-8-content-disposition` AWS profile in the credentials list on your machine:
 

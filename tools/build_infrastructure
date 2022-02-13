@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Description: Build sample AWS S3 and Cloudfront Infrastructure
+# Description: Build sample AWS S3 and CloudFront Infrastructure
 set -e
 
 ./tools/init_infrastructure

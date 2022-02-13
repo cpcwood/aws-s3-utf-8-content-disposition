@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Description: Initialize sample AWS S3 and Cloudfront Infrastructure
+# Description: Initialize sample AWS S3 and CloudFront Infrastructure
 set -e
 
 if [[ ! -f "./keys/cloudfront_s3.pem" ]]; then
-  echo "Generating CloudFront Signed URLs Key"
+  echo "Generating Key For CloudFront Signed URLs "
   openssl genrsa -out ./keys/cloudfront_s3.pem
 fi
 
