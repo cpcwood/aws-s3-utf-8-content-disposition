@@ -1,6 +1,6 @@
 # AWS S3 UTF-8 Content Disposition - Examples
 
-Sample scripts and AWS infrastructure to generate the AWS S3 UTF-8 content disposition examples outlined in my blog post: [AWS S3 UTF-8 Content Disposition](https://www.cpcwood.com/blog/5-aws-s3-utf-8-content-disposition).
+Sample scripts and AWS infrastructure to test the AWS S3 UTF-8 content disposition examples outlined in my blog post: [AWS S3 UTF-8 Content Disposition](https://www.cpcwood.com/blog/5-aws-s3-utf-8-content-disposition).
 
 ## Dependencies
 
@@ -13,9 +13,9 @@ Install required dependencies:
 
 ### AWS Credentials
 
-Create IAM user with relevant permissions for Terraform ECS setup (S3, DynamoDB, CloudFront, etc), or `AdministratorAccess` for quicker setup.
+Create an AWS IAM user with the relevant permissions for the Terraform setup (S3, DynamoDB, CloudFront, etc) or use `AdministratorAccess` for quicker setup.
 
-Add access keys for the IAM user to the `aws-s3-utf-8-content-disposition` AWS profile in the credentials list on your machine:
+Add the access keys for the IAM user to the `aws-s3-utf-8-content-disposition` AWS profile in the credentials list on your machine:
 
 ```sh
 sudo vim ~/.aws/credentials
@@ -29,9 +29,9 @@ aws_secret_access_key = <iam user secret key>
 
 ### Create The Infrastructure
 
-Fork or clone the project.
+Fork or clone the project and navigate to the project root directory.
 
-IMPORTANT: While the infrastructure required for this example project is covered by the AWS `Always free` tier, high usage or installation on an account with other resource usage may cost you money. Please remember evaluate costs and to teardown project afterwards.
+IMPORTANT: While the infrastructure required for this example project is covered by the AWS `Always free` tier, high usage or installation on an account with other resource usage may cost you money. Please remember to evaluate costs and teardown project afterwards.
 
 Run build script:
 
@@ -47,20 +47,15 @@ Run destroy script:
 ./bin/destroy_infrastructure
 ```
 
-
 ## Examples
 
-Once the project infrastructure is build, navigate to the project root directory to run the examples script.
+Once the project infrastructure is built, the [examples script](./examples.rb) can be run. Each example creates a signed CloudFront URL which can be used to download the sample S3 object `not-a-cat.jpg` with a different filename. The filename is set using the `response-content-disposition` parameter and the URL will be valid for 600 seconds by default.
 
-The examples create signed CloudFront URLs to download the sample S3 object `not-a-cat.jpg` with a different filename. The filename is set using the `response-content-disposition` parameter.
-
-The example script is written in Ruby and is run by calling the follow command, replacing `<example-number>` with the number of the example you want to run:
+The examples script is written in Ruby and is run by calling the follow command, replacing `<example-number>` with the number of the example you want to run:
 
 ```sh
 ruby ./examples.rb <example-number>
 ```
-
-The script will output a signed URL which will be valid for 600 seconds by default.
 
 Copy and paste the outputted URL into your browser to download the file and test the filename.
 
