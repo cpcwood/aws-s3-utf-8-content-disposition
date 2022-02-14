@@ -49,7 +49,9 @@ Run destroy script:
 
 ## Examples
 
-Once the project infrastructure is built, the [examples script](./examples.rb) can be run. Each example creates a signed CloudFront URL which can be used to download the sample S3 object `not-a-cat.jpg` with a different filename. The filename is set using the `response-content-disposition` parameter and the URL will be valid for 600 seconds by default.
+Once the project infrastructure is built, the [examples script](./examples.rb) can be run. 
+
+Each example creates a signed CloudFront URL which can be used to download the sample S3 object `not-a-cat.jpg` with a different filename. The filename is set using the `response-content-disposition` parameter and the URL will be valid for 600 seconds by default.
 
 The examples script is written in Ruby and is run by calling the follow command, replacing `<example-number>` with the number of the example you want to run:
 
