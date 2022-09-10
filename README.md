@@ -36,7 +36,7 @@ IMPORTANT: While the infrastructure required for this example project is covered
 Run build script:
 
 ```sh
-./bin/build_infrastructure
+./tools/build_infrastructure
 ```
 
 ### Teardown The Infrastructure
@@ -44,7 +44,7 @@ Run build script:
 Run destroy script:
 
 ```sh
-./bin/destroy_infrastructure
+./tools/destroy_infrastructure
 ```
 
 ## Examples
